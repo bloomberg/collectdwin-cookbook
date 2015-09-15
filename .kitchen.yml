@@ -6,11 +6,16 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: ubuntu-14.04
-  - name: ubuntu-12.04
-  - name: centos-7.1
-  - name: centos-6.4
-  - name: centos-5.8
+  - name: win2012-chef11
+    driver_config:
+      box: windows-2012r2
+    provisioner:
+      require_chef_omnibus: 11.16.4
+  - name: win2012-chef12
+    driver_config:
+      box: windows-2012r2
+    provisioner:
+      require_chef_omnibus: latest
 
 suites:
   - name: default
