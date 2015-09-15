@@ -1,0 +1,10 @@
+name 'CollectdWin-cookbook'
+maintainer 'Bloommberg L.P.'
+maintainer_email 'you@example.com'
+license 'all_rights'
+description 'Installs/Configures CollectdWin-cookbook'
+long_description 'Installs/Configures CollectdWin-cookbook'
+version '0.1.0'
+
+supports 'centos', '>= 6.4'
+supports 'redhat', '>= 6.4'
