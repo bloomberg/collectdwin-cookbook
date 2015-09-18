@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 gem 'chef-sugar'
 gem 'chef-vault'
 gem 'halite'
-gem 'poise'
+gem 'poise', '~> 2.2'
+gem 'poise-service', '~> 1.0'
+gem 'poise-boiler'
 
 group :lint do
   gem 'foodcritic'

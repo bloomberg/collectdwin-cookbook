@@ -7,3 +7,6 @@ long_description 'Installs/Configures CollectdWin-cookbook'
 version '0.1.0'
 
 supports 'windows'
+depends 'poise', '~> 2.2'
+depends 'poise-service', '~> 1.0'
+depends 'yum-epel'

@@ -41,6 +41,7 @@ validation-report.json
 
 # Folders to ignore
 bin
+cookbooks
 node_modules
 tmp
 vendor
@@ -51,3 +52,5 @@ vendor
 .chefdk
 .kitchen
 .vagrant
+.kitchen/
+.kitchen.local.yml
