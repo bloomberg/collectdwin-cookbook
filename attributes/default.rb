@@ -1,4 +1,3 @@
-
 def default_plugins
     [
         {'plugin' => {'attr' => {'name' => "Statsd", 'class' => "BloombergFLP.CollectdWin.StatsdPlugin", 'enable' => true}}},
@@ -57,8 +56,9 @@ def default_statsd_timer_percentiles
     ]
 end
 
-default['collectdwin']['service_name']  = 'CollectdWinService'
-default['collectdwin']['cfg_dir']       = "#{ENV['ProgramW6432']}/CollectdWin/config"
+default['collectdwin']['service']['name']           = "CollectdWinService (64 bit)"
+default['collectdwin']['service']['cfg_dir']        = "#{ENV['ProgramW6432']}/CollectdWin/config"
+default['collectdwin']['service']['package_source'] = "C:\\github\\bloomberg\\collectdwin\\src\\installer\\bin\\x64\\Debug\\CollectdWin-x64.msi"
 
 default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['interval']    =  30
 default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['timeout']     =  120
