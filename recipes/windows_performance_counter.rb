@@ -1,4 +1,5 @@
 collectdwin_config "WindowsPerformanceCounter.config" do 
-    directory = node['collectdwin']['cfg_dir']
-    configuration['windows_performance_counter'] = node['collectdwin']['plugins']['windows_performance_counter']
+    cfg_name 'windows_performance_counter'
+    directory node['collectdwin']['service']['cfg_dir']
+    configuration node['collectdwin']['plugins']['windows_performance_counter']
 end
