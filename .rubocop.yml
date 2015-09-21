@@ -38,6 +38,7 @@ AllCops:
     - 'test/**/*_test.rb'
     - 'test/**/*_spec.rb'
     - 'bin/**'
+    - 'cookbooks/**/*'
 
 Style/GuardClause:
   Enabled: false
