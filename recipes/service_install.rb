@@ -1,8 +1,8 @@
 
 windows_package node['collectdwin']['service']['name'] do
+  action :install
   source node['collectdwin']['service']['package_source']
   installer_type :msi
-  action :install
 end
 
 include_recipe 'CollectdWin-cookbook::collectd_win_config'
