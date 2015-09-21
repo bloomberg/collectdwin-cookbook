@@ -1,4 +1,5 @@
 collectdwin_config "Amqp.config" do 
-    directory = node['collectdwin']['cfg_dir']
-    configuration['amqp'] = node['collectdwin']['plugins']['amqp']
+    cfg_name 'amqp'
+    directory node['collectdwin']['service']['cfg_dir']
+    configuration node['collectdwin']['plugins']['amqp']
 end

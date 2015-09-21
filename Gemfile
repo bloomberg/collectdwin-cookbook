@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 gem 'chef-sugar'
 gem 'chef-vault'
 gem 'halite'

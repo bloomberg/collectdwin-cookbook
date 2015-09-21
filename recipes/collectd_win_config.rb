@@ -1,4 +1,5 @@
 collectdwin_config "CollectdWin.config" do 
-    directory = node['collectdwin']['cfg_dir']
-    configuration['collectd_win_config'] = node['collectdwin']['plugins']['collectd_win_config']
+    cfg_name 'collectd_win_config'
+    directory node['collectdwin']['service']['cfg_dir']
+    configuration node['collectdwin']['plugins']['collectd_win_config']
 end

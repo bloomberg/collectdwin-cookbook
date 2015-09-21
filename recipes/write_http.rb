@@ -1,4 +1,5 @@
 collectdwin_config "WriteHttp.config" do 
-    directory = node['collectdwin']['cfg_dir']
-    configuration['write_http'] = node['collectdwin']['plugins']['write_http']
+    cfg_name 'write_http'
+    directory node['collectdwin']['service']['cfg_dir']
+    configuration node['collectdwin']['plugins']['write_http']
 end
