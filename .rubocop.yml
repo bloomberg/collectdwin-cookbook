@@ -33,6 +33,7 @@ Metrics/AbcSize:
   Enabled: false
 
 AllCops:
+  UseCache: false
   Exclude:
     - 'Guardfile'
     - 'test/**/*_test.rb'
