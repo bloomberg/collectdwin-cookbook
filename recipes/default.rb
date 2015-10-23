@@ -2,7 +2,32 @@
 # Cookbook: CollectdWin-cookbook
 #
 
-include_recipe 'CollectdWin-cookbook::service_install'
+windows_package node['collectdwin']['service']['name'] do
+  action :install
+  source node['collectdwin']['service']['package_source']
+  installer_type :msi
+end
+
+collectdwin_config 'CollectdWin.config' do
+  cfg_name 'collectd_win_config'
+  directory node['collectdwin']['service']['cfg_dir']
+  configuration node['collectdwin']['plugins']['collectd_win_config']
+end
+
+include_recipe 'CollectdWin-cookbook::statsd'
+include_recipe 'CollectdWin-cookbook::windows_performance_counter'
+include_recipe 'CollectdWin-cookbook::write_http'
+include_recipe 'CollectdWin-cookbook::amqp'
+
+windows_service node['collectdwin']['service']['name'] do
+  action :enable
+  startup_type :automatic
+end
+
+windows_service node['collectdwin']['service']['name'] do
+  action :start
+  startup_type :automatic
+end
 
 # ----------------------------------------------------------------------------
 # Copyright (C) 2015 Bloomberg Finance L.P.
