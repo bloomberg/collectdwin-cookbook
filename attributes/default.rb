@@ -2,7 +2,14 @@
 # Cookbook: CollectdWin-cookbook
 #
 
-def default_plugins
+default['collectdwin']['service']['name']           = 'CollectdWinService (64 bit)'
+default['collectdwin']['service']['cfg_dir']        = File.join("#{ENV['ProgramW6432']}",'CollectdWin','config')
+default['collectdwin']['service']['package_source'] = File.join('c:', 'scratch','collectdwin-x64.msi')
+
+default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['interval']    =  30
+default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['timeout']     =  120
+default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['store_rates'] =  false
+default['collectdwin']['plugins']['collectd_win_config']['plugins']                                 =
   [
     { 'plugin' => { 'attr' => { 'name' => 'Statsd', 'class' => 'BloombergFLP.CollectdWin.StatsdPlugin', 'enable' => true } } },
     { 'plugin' => { 'attr' => { 'name' => 'WindowsPerformanceCounter', 'class' => 'BloombergFLP.CollectdWin.WindowsPerformanceCounterPlugin', 'enable' => true } } },
@@ -10,18 +17,41 @@ def default_plugins
     { 'plugin' => { 'attr' => { 'name' => 'WriteHttp', 'class' => 'BloombergFLP.CollectdWin.WriteHttpPlugin', 'enable' => false } } },
     { 'plugin' => { 'attr' => { 'name' => 'Console', 'class' => 'BloombergFLP.CollectdWin.ConsolePlugin', 'enable' => true } } }
   ]
-end
 
-def default_write_http_nodes
+default['collectdwin']['plugins']['amqp']['publish']['attr']['name']               =  'testAmqpPublisher1'
+default['collectdwin']['plugins']['amqp']['publish']['attr']['host']               =  'testHost1'
+default['collectdwin']['plugins']['amqp']['publish']['attr']['port']               =  8090
+default['collectdwin']['plugins']['amqp']['publish']['attr']['virtual_host']       =  'collectd.vhost1'
+default['collectdwin']['plugins']['amqp']['publish']['attr']['user']               =  'collectd.user1'
+default['collectdwin']['plugins']['amqp']['publish']['attr']['password']           =  'collectd.password1'
+default['collectdwin']['plugins']['amqp']['publish']['attr']['exchange']           =  'collectd.exchange1'
+default['collectdwin']['plugins']['amqp']['publish']['attr']['routing_key_prefix'] =  'collectd.keyPrefix1'
+
+default['collectdwin']['plugins']['write_http']['nodes']                           = 
   [
     'node' => {
       'attr' => { 'name' => 'testNode', 'url' => 'http://localhost:8787/testhttp1', 'timeout' => 10_000, 'batch_size' => 15, 'max_idle_time' => 700_000 },
       'proxy' => { 'attr' => { 'enable' => false, 'url' => 'http://dummy.url.com' } }
     }
   ]
-end
 
-def default_windows_performance_counters
+default['collectdwin']['plugins']['statsd']['server']['attr']['host']              = 'localhost'
+default['collectdwin']['plugins']['statsd']['server']['attr']['port']              = 8125
+default['collectdwin']['plugins']['statsd']['delete_cache']['attr']['counters']    = true
+default['collectdwin']['plugins']['statsd']['delete_cache']['attr']['timers']      = true
+default['collectdwin']['plugins']['statsd']['delete_cache']['attr']['gauges']      = true
+default['collectdwin']['plugins']['statsd']['delete_cache']['attr']['sets']        = true
+default['collectdwin']['plugins']['statsd']['timer']['attr']['lower']              = true
+default['collectdwin']['plugins']['statsd']['timer']['attr']['upper']              = true
+default['collectdwin']['plugins']['statsd']['timer']['attr']['sum']                = true
+default['collectdwin']['plugins']['statsd']['timer']['attr']['count']              = true
+default['collectdwin']['plugins']['statsd']['timer']['percentiles']                = 
+  [
+    { 'percentile' => { 'attr' => { 'value' => 90.0 } } },
+    { 'percentile' => { 'attr' => { 'value' => 95.0 } } }
+  ]
+
+default['collectdwin']['plugins']['windows_performance_counter']['counters']       = 
   [
     { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Processor Time',  'instance' => '_Total', 'collectd_plugin' => 'aggregation', 'collectd_plugin_instance' => 'cpu-average', 'collectd_type' => 'cpu', 'collectd_type_instance' => 'processor' } } },
     { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Idle Time',       'instance' => '_Total', 'collectd_plugin' => 'aggregation', 'collectd_plugin_instance' => 'cpu-average', 'collectd_type' => 'cpu', 'collectd_type_instance' => 'idle' } } },
@@ -51,48 +81,6 @@ def default_windows_performance_counters
     { 'counter' => { 'attr' => { 'category' => 'Network Interface', 'name' => 'Bytes Received/Sec,Bytes Sent/Sec',                   'instance' => '*', 'collectd_plugin' => 'interface', 'collectd_plugin_instance' => '', 'collectd_type' => 'if_octets',   'collectd_type_instance' => '' } } },
     { 'counter' => { 'attr' => { 'category' => 'Network Interface', 'name' => 'Packets Received Errors,Packets Outbound Errors',     'instance' => '*', 'collectd_plugin' => 'interface', 'collectd_plugin_instance' => '', 'collectd_type' => 'if_errors',   'collectd_type_instance' => '' } } }
   ]
-end
-
-def default_statsd_timer_percentiles
-  [
-    { 'percentile' => { 'attr' => { 'value' => 90.0 } } },
-    { 'percentile' => { 'attr' => { 'value' => 95.0 } } }
-  ]
-end
-
-default['collectdwin']['service']['name']           = 'CollectdWinService (64 bit)'
-default['collectdwin']['service']['cfg_dir']        = "#{ENV['ProgramW6432']}/CollectdWin/config"
-default['collectdwin']['service']['package_source'] = 'C:\\github\\bloomberg\\collectdwin\\src\\installer\\bin\\x64\\Debug\\CollectdWin-x64.msi'
-
-default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['interval']    =  30
-default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['timeout']     =  120
-default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['store_rates'] =  false
-default['collectdwin']['plugins']['collectd_win_config']['plugins']                                 = default_plugins
-
-default['collectdwin']['plugins']['amqp']['publish']['attr']['name']               =  'testAmqpPublisher1'
-default['collectdwin']['plugins']['amqp']['publish']['attr']['host']               =  'testHost1'
-default['collectdwin']['plugins']['amqp']['publish']['attr']['port']               =  8090
-default['collectdwin']['plugins']['amqp']['publish']['attr']['virtual_host']       =  'collectd.vhost1'
-default['collectdwin']['plugins']['amqp']['publish']['attr']['user']               =  'collectd.user1'
-default['collectdwin']['plugins']['amqp']['publish']['attr']['password']           =  'collectd.password1'
-default['collectdwin']['plugins']['amqp']['publish']['attr']['exchange']           =  'collectd.exchange1'
-default['collectdwin']['plugins']['amqp']['publish']['attr']['routing_key_prefix'] =  'collectd.keyPrefix1'
-
-default['collectdwin']['plugins']['write_http']['nodes']                           = default_write_http_nodes
-
-default['collectdwin']['plugins']['windows_performance_counter']['counters']       = default_windows_performance_counters
-
-default['collectdwin']['plugins']['statsd']['server']['attr']['host']              = 'localhost'
-default['collectdwin']['plugins']['statsd']['server']['attr']['port']              = 8125
-default['collectdwin']['plugins']['statsd']['delete_cache']['attr']['counters']    = true
-default['collectdwin']['plugins']['statsd']['delete_cache']['attr']['timers']      = true
-default['collectdwin']['plugins']['statsd']['delete_cache']['attr']['gauges']      = true
-default['collectdwin']['plugins']['statsd']['delete_cache']['attr']['sets']        = true
-default['collectdwin']['plugins']['statsd']['timer']['attr']['lower']              = true
-default['collectdwin']['plugins']['statsd']['timer']['attr']['upper']              = true
-default['collectdwin']['plugins']['statsd']['timer']['attr']['sum']                = true
-default['collectdwin']['plugins']['statsd']['timer']['attr']['count']              = true
-default['collectdwin']['plugins']['statsd']['timer']['percentiles']                = default_statsd_timer_percentiles
 
 # ----------------------------------------------------------------------------
 # Copyright (C) 2015 Bloomberg Finance L.P.
