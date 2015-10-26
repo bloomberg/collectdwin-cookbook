@@ -51,6 +51,8 @@ default['collectdwin']['plugins']['statsd']['timer']['percentiles']             
     { 'percentile' => { 'attr' => { 'value' => 95.0 } } }
   ]
 
+default['collectdwin']['plugins']['windows_performance_counter']['reload_configuration']['attr']['Enable'] = true
+default['collectdwin']['plugins']['windows_performance_counter']['reload_configuration']['attr']['Interval'] = 1200
 default['collectdwin']['plugins']['windows_performance_counter']['counters']       = 
   [
     { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Processor Time',  'instance' => '_Total', 'collectd_plugin' => 'aggregation', 'collectd_plugin_instance' => 'cpu-average', 'collectd_type' => 'cpu', 'collectd_type_instance' => 'processor' } } },
