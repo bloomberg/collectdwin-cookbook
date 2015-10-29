@@ -2,7 +2,7 @@
 # Cookbook: CollectdWin-cookbook
 #
 
-default['collectdwin']['service']['name']           = 'CollectdWinService (64 bit)'
+default['collectdwin']['service']['name']           = 'CollectdWinService'
 default['collectdwin']['service']['cfg_dir']        = File.join("#{ENV['ProgramW6432']}",'CollectdWin','config')
 default['collectdwin']['service']['package_source'] = File.join('c:', 'scratch','collectdwin-x64.msi')
 
