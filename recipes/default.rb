@@ -3,7 +3,6 @@
 #
 
 windows_package_core node['collectdwin']['service']['name'] do
-  provider Chef::Provider::Package::Windows
   action :install
   source node['collectdwin']['service']['package_source']
   installer_type :msi
