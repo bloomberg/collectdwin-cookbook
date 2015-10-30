@@ -2,9 +2,15 @@
 # Cookbook: CollectdWin-cookbook
 #
 
+pkg_basename = ::File.basename(node['collectdwin']['service']['package_source'])
+pkg_path = ::File.join(Chef::Config[:file_cache_path], pkg_basename)
+remote_file pkg_path do
+  source node['collectdwin']['service']['package_source']
+end
+
 windows_package node['collectdwin']['service']['name'] do
   action :install
-  source node['collectdwin']['service']['package_source']
+  source pkg_path
   installer_type :msi
 end
 
