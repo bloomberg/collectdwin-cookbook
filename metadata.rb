@@ -4,7 +4,7 @@ maintainer_email 'yramalingam1@bloommberg.net'
 license 'all_rights'
 description 'Installs/Configures CollectdWin-cookbook'
 long_description 'Installs/Configures CollectdWin-cookbook'
-version '0.2.3'
+version '0.2.4'
 
 supports 'windows'
 depends 'poise', '~> 2.2'
