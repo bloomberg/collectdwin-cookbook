@@ -2,7 +2,7 @@
 # Cookbook: CollectdWin-cookbook
 #
 
-windows_package node['collectdwin']['service']['name'] do
+windows_package_core node['collectdwin']['service']['name'] do
   provider Chef::Provider::Package::Windows
   action :install
   source node['collectdwin']['service']['package_source']

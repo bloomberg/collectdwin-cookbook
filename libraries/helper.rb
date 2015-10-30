@@ -2,4 +2,5 @@
 # Cookbook: CollectdWin-cookbook
 #
 
-Chef.set_resource_priority_array(:windows_package, [ Chef::Resource::WindowsPackage ], os: 'windows')
+Chef::Resource::WindowsPackage.provides :windows_package_core, os: "windows"
+Chef::Provider::Package::Windows.provides :windows_package_core, os: "windows"
