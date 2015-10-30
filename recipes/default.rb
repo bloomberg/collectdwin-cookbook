@@ -1,6 +1,7 @@
 #
 # Cookbook: CollectdWin-cookbook
 #
+Chef.set_resource_priority_array(:windows_package, [ Chef::Resource::WindowsPackage ], os: 'windows')
 
 windows_package node['collectdwin']['service']['name'] do
   provider Chef::Provider::Package::Windows
