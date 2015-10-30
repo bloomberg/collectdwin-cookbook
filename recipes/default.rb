@@ -12,7 +12,7 @@ collectdwin_config 'CollectdWin.config' do
   cfg_name 'collectd_win_config'
   directory node['collectdwin']['service']['cfg_dir']
   configuration node['collectdwin']['plugins']['collectd_win_config']
-  notifies :restart, "#{windows_service[node['collectdwin']['service']['name']]}", :delayed
+  notifies :restart, "windows_service[#{node['collectdwin']['service']['name']}]", :delayed
 end
 
 include_recipe 'CollectdWin-cookbook::statsd'
