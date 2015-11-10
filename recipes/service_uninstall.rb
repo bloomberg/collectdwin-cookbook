@@ -2,12 +2,12 @@
 # Cookbook: CollectdWin-cookbook
 #
 
-windows_service node['collectdwin']['service']['name'] do
-  action :stop
+windows_service node['collectdwin']['service']['old_name'] do
+  action [:stop, :disable]
 end
 
-windows_package node['collectdwin']['service']['name'] do
-  source node['collectdwin']['service']['package_source']
+windows_package node['collectdwin']['service']['old_name'] do
+  source node['collectdwin']['service']['old_package_source']
   installer_type :msi
   action :remove
 end
