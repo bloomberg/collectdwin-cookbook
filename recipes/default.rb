@@ -6,6 +6,7 @@ windows_package_core node['collectdwin']['service']['name'] do
   action :install
   source node['collectdwin']['service']['package_source']
   installer_type :msi
+  options 'REINSTALLMODE="amus" /qn'
 end
 
 collectdwin_config 'CollectdWin.config' do
