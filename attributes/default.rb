@@ -55,17 +55,17 @@ default['collectdwin']['plugins']['windows_performance_counter']['reload_configu
 default['collectdwin']['plugins']['windows_performance_counter']['reload_configuration']['attr']['Interval'] = 1200
 default['collectdwin']['plugins']['windows_performance_counter']['counters']       = 
   [
-    { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Processor Time',  'instance' => '_Total', 'collectd_plugin' => 'cpu', 'collectd_plugin_instance' => 'cpu-average', 'collectd_type' => 'cpu', 'collectd_type_instance' => 'processor' } } },
-    { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Idle Time',       'instance' => '_Total', 'collectd_plugin' => 'cpu', 'collectd_plugin_instance' => 'cpu-average', 'collectd_type' => 'cpu', 'collectd_type_instance' => 'idle' } } },
-    { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Privileged Time', 'instance' => '_Total', 'collectd_plugin' => 'cpu', 'collectd_plugin_instance' => 'cpu-average', 'collectd_type' => 'cpu', 'collectd_type_instance' => 'system' } } },
-    { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% User Time',       'instance' => '_Total', 'collectd_plugin' => 'cpu', 'collectd_plugin_instance' => 'cpu-average', 'collectd_type' => 'cpu', 'collectd_type_instance' => 'user' } } },
-    { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Interrupt Time',  'instance' => '_Total', 'collectd_plugin' => 'cpu', 'collectd_plugin_instance' => 'cpu-average', 'collectd_type' => 'cpu', 'collectd_type_instance' => 'interrupt' } } },
+    { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Processor Time',  'instance' => '_Total', 'collectd_plugin' => 'cpu', 'collectd_plugin_instance' => '', 'collectd_type' => 'percent', 'collectd_type_instance' => 'processor' } } },
+    { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Idle Time',       'instance' => '_Total', 'collectd_plugin' => 'cpu', 'collectd_plugin_instance' => '', 'collectd_type' => 'percent', 'collectd_type_instance' => 'idle' } } },
+    { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Privileged Time', 'instance' => '_Total', 'collectd_plugin' => 'cpu', 'collectd_plugin_instance' => '', 'collectd_type' => 'percent', 'collectd_type_instance' => 'system' } } },
+    { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% User Time',       'instance' => '_Total', 'collectd_plugin' => 'cpu', 'collectd_plugin_instance' => '', 'collectd_type' => 'percent', 'collectd_type_instance' => 'user' } } },
+    { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Interrupt Time',  'instance' => '_Total', 'collectd_plugin' => 'cpu', 'collectd_plugin_instance' => '', 'collectd_type' => 'percent', 'collectd_type_instance' => 'interrupt' } } },
 
     { 'counter' => { 'attr' => { 'category' => 'Memory', 'name' => 'Available Bytes',           'collectd_plugin' => 'memory', 'collectd_plugin_instance' => '', 'collectd_type' => 'memory', 'collectd_type_instance' => 'free' } } },
     { 'counter' => { 'attr' => { 'category' => 'Memory', 'name' => 'Page Faults/sec',           'collectd_plugin' => 'memory', 'collectd_plugin_instance' => '', 'collectd_type' => 'memory', 'collectd_type_instance' => 'faults_per_sec' } } },
     { 'counter' => { 'attr' => { 'category' => 'Memory', 'name' => '% Committed Bytes In Use',  'collectd_plugin' => 'memory', 'collectd_plugin_instance' => '', 'collectd_type' => 'memory', 'collectd_type_instance' => 'percent_committed_inuse' } } },
 
-    { 'counter' => { 'attr' => { 'category' => 'Paging File', 'name' => '% Usage', 'instance' => '_Total', 'collectd_plugin' => 'swap', 'collectd_plugin_instance' => '', 'collectd_type' => 'swap', 'collectd_type_instance' => 'percent_used' } } },
+    { 'counter' => { 'attr' => { 'category' => 'Paging File', 'name' => '% Usage', 'instance' => '_Total', 'collectd_plugin' => 'swap', 'collectd_plugin_instance' => '', 'collectd_type' => 'percent', 'collectd_type_instance' => 'percent_used' } } },
 
     { 'counter' => { 'attr' => { 'category' => 'System', 'name' => 'System Up Time',    'collectd_plugin' => 'uptime', 'collectd_plugin_instance' => '', 'collectd_type' => 'uptime', 'collectd_type_instance' => '' } } },
     { 'counter' => { 'attr' => { 'category' => 'System', 'name' => 'System Calls/sec',  'collectd_plugin' => 'system', 'collectd_plugin_instance' => '', 'collectd_type' => 'gauge',  'collectd_type_instance' => 'sys_calls_per_sec' } } },
