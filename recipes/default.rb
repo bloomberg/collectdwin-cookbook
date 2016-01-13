@@ -23,10 +23,10 @@ if not node['packages']
   end
 end
 
-include_recipe 'CollectdWin-cookbook::statsd'
-include_recipe 'CollectdWin-cookbook::windows_performance_counter'
-include_recipe 'CollectdWin-cookbook::write_http'
-include_recipe 'CollectdWin-cookbook::amqp'
+include_recipe 'collectdwin::statsd'
+include_recipe 'collectdwin::windows_performance_counter'
+include_recipe 'collectdwin::write_http'
+include_recipe 'collectdwin::amqp'
 
 windows_service node['collectdwin']['service']['name'] do
   action [:enable, :start]
