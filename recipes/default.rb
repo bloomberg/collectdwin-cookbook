@@ -2,18 +2,22 @@
 # Cookbook: CollectdWin-cookbook
 #
 
-windows_package_core node['collectdwin']['service']['name'] do
-  action :install
-  source node['collectdwin']['service']['package_source']
-  installer_type :msi
-  options 'REINSTALLMODE="amus" /qn'
-end
+if not node['packages']
+   or not node['packages']['CollectdWinService']
+   or not node['packages']['CollectdWinService']['version'] == node['collectdwin']['service']['package_version'] do
+  windows_package_core node['collectdwin']['service']['name'] do
+    action :install
+    source node['collectdwin']['service']['package_source']
+    installer_type :msi
+    options 'REINSTALLMODE="amus" /qn'
+  end
 
-collectdwin_config 'CollectdWin.config' do
-  cfg_name 'collectd_win_config'
-  directory node['collectdwin']['service']['cfg_dir']
-  configuration node['collectdwin']['plugins']['collectd_win_config']
-  notifies :restart, "windows_service[#{node['collectdwin']['service']['name']}]", :delayed
+  collectdwin_config 'CollectdWin.config' do
+    cfg_name 'collectd_win_config'
+    directory node['collectdwin']['service']['cfg_dir']
+    configuration node['collectdwin']['plugins']['collectd_win_config']
+    notifies :restart, "windows_service[#{node['collectdwin']['service']['name']}]", :delayed
+  end
 end
 
 include_recipe 'CollectdWin-cookbook::statsd'
