@@ -1,12 +1,12 @@
-name 'CollectdWin-cookbook'
-maintainer 'Bloommberg L.P.'
+name 'collectdwin'
+maintainer 'Yoga Ramalingam'
 maintainer_email 'yramalingam1@bloommberg.net'
-license 'all_rights'
-description 'Installs/Configures CollectdWin-cookbook'
-long_description 'Installs/Configures CollectdWin-cookbook'
+license 'Apache 2.0'
+description 'Application cookbook which installs and configures collectdwin.'
+long_description 'Application cookbook which installs and configures collectdwin.'
 version '0.2.13'
 
 supports 'windows'
+
 depends 'poise', '~> 2.2'
 depends 'poise-service', '~> 1.0'
-depends 'yum-epel'
