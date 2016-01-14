@@ -1,5 +1,8 @@
 #
-# Cookbook: CollectdWin-cookbook
+# Cookbook: collectdwin
+# License: Apache 2.0
+#
+# Copyright 2015-2016, Bloomberg Finance L.P.
 #
 
 default['collectdwin']['service']['name']           = 'CollectdWinService'
@@ -27,7 +30,7 @@ default['collectdwin']['plugins']['amqp']['publish']['attr']['password']        
 default['collectdwin']['plugins']['amqp']['publish']['attr']['exchange']           =  'collectd.exchange1'
 default['collectdwin']['plugins']['amqp']['publish']['attr']['routing_key_prefix'] =  'collectd.keyPrefix1'
 
-default['collectdwin']['plugins']['write_http']['nodes']                           = 
+default['collectdwin']['plugins']['write_http']['nodes']                           =
   [
     'node' => {
       'attr' => { 'name' => 'testNode', 'url' => 'http://localhost:8787/testhttp1', 'timeout' => 10_000, 'batch_size' => 15, 'max_idle_time' => 700_000 },
@@ -45,7 +48,7 @@ default['collectdwin']['plugins']['statsd']['timer']['attr']['lower']           
 default['collectdwin']['plugins']['statsd']['timer']['attr']['upper']              = true
 default['collectdwin']['plugins']['statsd']['timer']['attr']['sum']                = true
 default['collectdwin']['plugins']['statsd']['timer']['attr']['count']              = true
-default['collectdwin']['plugins']['statsd']['timer']['percentiles']                = 
+default['collectdwin']['plugins']['statsd']['timer']['percentiles']                =
   [
     { 'percentile' => { 'attr' => { 'value' => 90.0 } } },
     { 'percentile' => { 'attr' => { 'value' => 95.0 } } }
@@ -53,7 +56,7 @@ default['collectdwin']['plugins']['statsd']['timer']['percentiles']             
 
 default['collectdwin']['plugins']['windows_performance_counter']['reload_configuration']['attr']['Enable'] = true
 default['collectdwin']['plugins']['windows_performance_counter']['reload_configuration']['attr']['Interval'] = 1200
-default['collectdwin']['plugins']['windows_performance_counter']['counters']       = 
+default['collectdwin']['plugins']['windows_performance_counter']['counters']       =
   [
     { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Processor Time',  'instance' => '_Total', 'collectd_plugin' => 'cpu', 'collectd_plugin_instance' => '', 'collectd_type' => 'percent', 'collectd_type_instance' => 'processor' } } },
     { 'counter' => { 'attr' => { 'category' => 'Processor', 'name' => '% Idle Time',       'instance' => '_Total', 'collectd_plugin' => 'cpu', 'collectd_plugin_instance' => '', 'collectd_type' => 'percent', 'collectd_type_instance' => 'idle' } } },
@@ -83,18 +86,3 @@ default['collectdwin']['plugins']['windows_performance_counter']['counters']    
     { 'counter' => { 'attr' => { 'category' => 'Network Interface', 'name' => 'Bytes Received/Sec,Bytes Sent/Sec',                   'instance' => '*', 'collectd_plugin' => 'interface', 'collectd_plugin_instance' => '', 'collectd_type' => 'if_octets',   'collectd_type_instance' => '' } } },
     { 'counter' => { 'attr' => { 'category' => 'Network Interface', 'name' => 'Packets Received Errors,Packets Outbound Errors',     'instance' => '*', 'collectd_plugin' => 'interface', 'collectd_plugin_instance' => '', 'collectd_type' => 'if_errors',   'collectd_type_instance' => '' } } }
   ]
-
-# ----------------------------------------------------------------------------
-# Copyright (C) 2015 Bloomberg Finance L.P.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-# ----------------------------- END-OF-FILE ----------------------------------
