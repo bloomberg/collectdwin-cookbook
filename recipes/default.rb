@@ -33,6 +33,6 @@ windows_service node['collectdwin']['service']['name'] do
   startup_type :automatic
 end
 
-if (node['collectdwin']['service'].key?('failure_actions') and node['collectdwin']['service'].key?('failure_reset_time(s)'))
+if (node['collectdwin']['service'].key?('failure_actions') and node['collectdwin']['service'].has_key?('failure_reset_time(s)'))
 	include_recipe 'collectdwin::custom_failure_actions'
 end

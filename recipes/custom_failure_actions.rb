@@ -17,9 +17,12 @@
 
 execute 'sc_failure_config' do
 	command "sc.exe failure #{node['collectdwin']['service']['name']} " + 
-	"reset= #{node['collectdwin']['service']['failure_reset_time(s)']} " +
-	(node['collectdwin']['service'].key?('failure_command') ? "command= \"#{node['collectdwin']['service'].key?('failure_command')}\" " : "") +
-	(node['collectdwin']['service'].key?('failure_reboot') ? "reboot= \"#{node['collectdwin']['service'].key?('failure_reboot')}\" " : "") +
+	"reset= #{node['collectdwin']['service']['failure_reset_time(s)']} command= " +
+	(node['collectdwin']['service'].key?('failure_command') ? 
+		"\"#{node['collectdwin']['service']['failure_command']}\" " : '"" ') +
+		"reboot= " +
+	(node['collectdwin']['service'].key?('failure_reboot') ? 
+		"\"#{node['collectdwin']['service']['failure_reboot']}\" " : '"" ') +
 	"actions= #{node['collectdwin']['service']['failure_actions'].flatten.join('/')}"
 	action :run
 end
