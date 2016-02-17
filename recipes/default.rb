@@ -32,3 +32,7 @@ windows_service node['collectdwin']['service']['name'] do
   action [:enable, :start]
   startup_type :automatic
 end
+
+if (node['collectdwin']['service'].key?('failure_actions') and node['collectdwin']['service'].key?('failure_reset_time(s)'))
+	include_recipe 'collectdwin::custom_failure_actions'
+end
