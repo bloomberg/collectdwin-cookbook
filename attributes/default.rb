@@ -2,7 +2,7 @@
 # Cookbook: collectdwin
 # License: Apache 2.0
 #
-# Copyright 2015-2016,[[:space:]] Bloomberg Finance L.P.
+# Copyright 2015-2016, Bloomberg Finance L.P.
 #
 
 default['collectdwin']['service']['name']           = 'CollectdWinService'
