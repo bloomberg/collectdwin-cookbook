@@ -1,5 +1,5 @@
 #
-# Cookbook: CollectdWin-cookbook
+# Cookbook: collectdwin-cookbook
 #
 
 # windows_package is defined in 2 places,

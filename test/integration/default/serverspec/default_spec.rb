@@ -1,5 +1,5 @@
 #
-# Cookbook: CollectdWin-cookbook
+# Cookbook: collectdwin-cookbook
 #
 
 require 'spec_helper'

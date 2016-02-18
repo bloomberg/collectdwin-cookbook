@@ -1,5 +1,5 @@
 #
-# Cookbook: CollectdWin-cookbook
+# Cookbook: collectdwin-cookbook
 #
 
 require 'chefspec'
@@ -10,8 +10,8 @@ require 'chef-vault'
 
 RSpec.configure do |config|
   # Set default platform family and version for ChefSpec.
-  config.platform = 'redhat'
-  config.version = '6.4'
+  config.platform = 'windows'
+  config.version = '2008R2'
 
   config.color = true
   config.alias_example_group_to :describe_recipe, type: :recipe
