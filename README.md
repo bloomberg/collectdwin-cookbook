@@ -1,4 +1,4 @@
-# CollectdWin-cookbook
+# collectdwin-cookbook
 [![License](https://img.shields.io/badge/license-Apache_2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 [Application cookbook][0] which installs and configures the
@@ -33,7 +33,7 @@ node.default['collectdwin']['plugins']['write_http']['nodes'] =
         }
     }
   ]
-include_recipe 'CollectdWin-cookbook::default'
+include_recipe 'collectdwin::default'
 ```
 
 [0]: http://blog.vialstudios.com/the-environment-cookbook-pattern#theapplicationcookbook

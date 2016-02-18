@@ -1,11 +1,11 @@
 #
-# Cookbook: CollectdWin-cookbook
+# Cookbook: collectdwin-cookbook
 #
 
 require 'spec_helper'
 
-describe_recipe 'CollectdWin-cookbook::default' do
-  service_name = 'CollectdWinService (64 bit)'
+describe_recipe 'collectdwin::default' do
+  service_name = 'CollectdWinService'
   cached(:chef_run) { ChefSpec::SoloRunner.converge(described_recipe) }
   it { expect(chef_run).to enable_windows_service(service_name) }
   it { expect(chef_run).to start_windows_service(service_name) }
