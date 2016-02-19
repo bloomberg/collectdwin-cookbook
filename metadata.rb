@@ -4,7 +4,7 @@ maintainer_email 'yramalingam1@bloommberg.net'
 license 'Apache 2.0'
 description 'Application cookbook which installs and configures collectdwin.'
 long_description 'Application cookbook which installs and configures collectdwin.'
-version '0.2.15'
+version '0.2.16'
 
 supports 'windows'
 
