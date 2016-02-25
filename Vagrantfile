@@ -1,5 +1,5 @@
 #
-# Cookbook: CollectdWin-cookbook
+# Cookbook: collectdwin-cookbook
 #
 
 %w(vagrant-berkshelf vagrant-cachier vagrant-omnibus).each do |name|
@@ -19,7 +19,7 @@ Vagrant.configure('2') do |config|
   config.vm.define :instance, primary: true do |guest|
     guest.vm.provision :chef_zero do |chef|
       chef.nodes_path = File.expand_path('../.vagrant/chef/nodes', __FILE__)
-      chef.run_list = %w(CollectdWin-cookbook::default)
+      chef.run_list = %w(collectdwin::default)
     end
   end
 end
