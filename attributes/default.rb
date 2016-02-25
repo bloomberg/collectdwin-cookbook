@@ -13,6 +13,8 @@ default['collectdwin']['plugins']['collectd_win_config']['general_settings']['at
 default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['timeout']     =  120
 default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['store_rates'] =  false
 
+# Parameters for sc.exe, which lets us set failure actions
+# see: https://technet.microsoft.com/en-us/library/cc742019.aspx
 default['collectdwin']['service']['failure_recovery']['actions'] = 'restart/0/restart/0//'
 default['collectdwin']['service']['failure_recovery']['reset'] = 3600
 default['collectdwin']['service']['failure_recovery']['optional'] = ''

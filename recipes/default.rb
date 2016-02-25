@@ -5,6 +5,8 @@
 # Copyright 2015-2016, Bloomberg Finance L.P.
 #
 
+# Parameters for sc.exe, which lets us set failure actions
+# see: https://technet.microsoft.com/en-us/library/cc742019.aspx
 actions = node['collectdwin']['service']['failure_recovery']['actions']
 reset = node['collectdwin']['service']['failure_recovery']['reset']
 optional = node['collectdwin']['service']['failure_recovery']['optional']
