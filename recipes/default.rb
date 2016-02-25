@@ -5,6 +5,15 @@
 # Copyright 2015-2016, Bloomberg Finance L.P.
 #
 
+actions = node['collectdwin']['service']['failure_recovery']['actions']
+reset = node['collectdwin']['service']['failure_recovery']['reset']
+optional = node['collectdwin']['service']['failure_recovery']['optional']
+
+execute 'sc_config_fa' do
+  command "sc.exe failure CollectWinService #{optional} reset= #{reset} actions= #{actions}"
+  action :nothing
+end
+
 if !node['packages'] ||
    !node['packages']['CollectdWinService'] ||
    node['packages']['CollectdWinService']['version'] != node['collectdwin']['service']['package_version']
@@ -13,6 +22,7 @@ if !node['packages'] ||
     source node['collectdwin']['service']['package_source']
     installer_type :msi
     options 'REINSTALLMODE="amus" /qn'
+    notifies :run, 'execute[sc_config_fa]', :delayed
   end
 end
 

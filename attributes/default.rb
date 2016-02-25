@@ -12,3 +12,7 @@ default['collectdwin']['service']['package_source'] = File.join('c:', 'scratch',
 default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['interval']    =  30
 default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['timeout']     =  120
 default['collectdwin']['plugins']['collectd_win_config']['general_settings']['attr']['store_rates'] =  false
+
+default['collectdwin']['service']['failure_recovery']['actions'] = 'restart/0/restart/0//'
+default['collectdwin']['service']['failure_recovery']['reset'] = 3600
+default['collectdwin']['service']['failure_recovery']['optional'] = ''
