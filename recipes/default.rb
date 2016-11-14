@@ -11,7 +11,7 @@ actions = node['collectdwin']['service']['failure_recovery']['actions']
 reset = node['collectdwin']['service']['failure_recovery']['reset']
 optional = node['collectdwin']['service']['failure_recovery']['optional']
 
-execute 'sc_config_fa' do
+execute 'collectdwin_sc_config' do
   command "sc.exe failure CollectdWinService #{optional} reset= #{reset} actions= #{actions}"
   action :nothing
 end
