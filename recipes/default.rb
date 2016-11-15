@@ -24,7 +24,7 @@ if !node['packages'] ||
     source node['collectdwin']['service']['package_source']
     installer_type :msi
     options 'REINSTALLMODE="amus" /qn'
-    notifies :run, 'execute[sc_config_fa]', :delayed
+    notifies :run, 'execute[collectdwin_sc_config]', :delayed
   end
 end
 
